@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cloudify laravel php REST application 1 - Build RESTful api laravel php app"
-date:   2020-05-04 15:40:14 +0100
+date:   2020-05-10 15:40:14 +0100
 categories: php, REST api
 ---
 It is a guide from A to Z to create a laravel and deploy to cloud under docker, kubernetes technology.
