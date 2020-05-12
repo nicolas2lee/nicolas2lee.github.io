@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Cloudify laravel php REST application"
+title:  "Cloudify laravel php REST application 1 - Build RESTful api laravel php app"
 date:   2020-05-04 15:40:14 +0100
-categories: helm, php
+categories: php, REST api
 ---
 It is a guide from A to Z to create a laravel and deploy to cloud under docker, kubernetes technology.
 
@@ -67,6 +67,7 @@ Then we need to replace them with our postgresl configuration, just be careful t
 In order to check whether all the variables are correct and the connection is establed, we can check with tinker:
 
     php artisan tinker
+    
 Once connected, run below command to check:
 
     DB::connection()->getPdo();
@@ -132,6 +133,7 @@ Here is an example of successful output:
     Migrating: 2019_08_19_000000_create_failed_jobs_table
     Migrated:  2019_08_19_000000_create_failed_jobs_table (2.23 seconds)
     Database seeding completed successfully.
+    
 # Add two RESTful API
 Here we want to add two endpoints:
 
