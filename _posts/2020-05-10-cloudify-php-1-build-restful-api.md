@@ -44,24 +44,24 @@ Check it again in the browser, it will run correctly.
 ```
 demo
 |  app/              -> core application code
-|  bootstrap/ -> core for boosting framework & framework optimised cache
-|  config/ -> configuration 
-|  database/ -> for database schema migration & seeds
-|  public/ -> for all public resources & entrypoint of your application
-|  resources/ -> similar as public which may contains i18n
-|  routes/ -> definition of routes
-|  storage/  -> store user generated, framework generated files or logs 
-|  tests/ -> test
-|  vendor/ -> all dependencies
-|  .env -> environmental variable
-|  artisan -> laravel commandline tool
-|  composer.json -> centralized dependency management file 
-|  composer.lock -> fix version centralized dependency management file 
-|  package.json  -> nodejs server usage
-|  packge-lock.json -> nodejs server usage
-|  phpunit.xml -> test config
-|  server.php -> laravel framework server
-|  webpack.mix.js -> nodejs server usage
+|  bootstrap/        -> core for boosting framework & framework optimised cache
+|  config/           -> configuration 
+|  database/         -> for database schema migration & seeds
+|  public/           -> for all public resources & entrypoint of your application
+|  resources/        -> similar as public which may contains i18n
+|  routes/           -> definition of routes
+|  storage/          -> store user generated, framework generated files or logs 
+|  tests/            -> test
+|  vendor/           -> all dependencies
+|  .env              -> environmental variable
+|  artisan           -> laravel commandline tool
+|  composer.json     -> centralized dependency management file 
+|  composer.lock     -> fix version centralized dependency management file 
+|  package.json      -> nodejs server usage
+|  packge-lock.json  -> nodejs server usage
+|  phpunit.xml       -> test config
+|  server.php        -> laravel framework server
+|  webpack.mix.js    -> nodejs server usage
 ```
 # Configuration & preparation database
 I want to use postgresql as the relational database which is provisioned in ibmcloud, and then configure the laravel application to connect.
