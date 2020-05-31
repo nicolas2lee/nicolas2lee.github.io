@@ -5,3 +5,9 @@ date:   2020-05-12 10:17:14 +0100
 categories: php, REST api
 ---
 It is a guide from A to Z to create a laravel and deploy to cloud under docker, kubernetes technology.
+
+## Build docker image
+
+
+
+## Create helm chart
