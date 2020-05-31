@@ -41,8 +41,7 @@ You can do it manually or by using yum downloadonly plugin
 
 2. Install rpm packages locally
 
-
-    yum install localinstall <path-to-rpm-pacakge>.rpm
+        yum localinstall <path-to-rpm-pacakge>.rpm
 
 A complete example:
   
