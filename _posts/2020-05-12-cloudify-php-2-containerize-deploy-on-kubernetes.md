@@ -17,7 +17,7 @@ And here comes 2 situations:
 #### Install from Internet
 We use a third party remi repo to install php, in order to add repo for yum:
 
-    yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    yum --add-repo http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
 For some security reasons, we may need configure a proxy to download from Internet, then you should configure your yum proxy which is located in /etc/yum.conf:
 
