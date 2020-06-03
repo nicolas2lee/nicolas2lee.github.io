@@ -22,6 +22,7 @@ We use a third party remi repo to install php, in order to add repo for yum:
 And then we need to enable this repo:
 
     yum-config-manager --enable remi-php72
+    
 Update package list:
 
     yum update
@@ -42,6 +43,12 @@ You can do it manually or by using yum downloadonly plugin
 2. Install rpm packages locally
 
         yum localinstall <path-to-rpm-pacakge>.rpm
+
+A command is quite useful when test with docker image, in order to install package in a docker container, you should oftern need root rightn so this command allow you run docker container as root:
+
+        docker run --user 0 -it <docker-container-id> bash 
+        
+For alpine version image, you should put bin/ash instead of bash
 
 A complete example:
   
