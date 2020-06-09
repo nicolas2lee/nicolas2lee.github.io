@@ -7,6 +7,7 @@ categories: lcs, dp, algorithm
 # Longest common subsequence
 ## Problem description
 [Leetcode lcs practice problem](https://leetcode.com/problems/longest-common-subsequence/)
+
 The problem is given two string: text1, text2, should find the longest common subsequence.
 For example: text1 = "abcde", text2 = "ace" 
 The longest length is 3, "ace"
