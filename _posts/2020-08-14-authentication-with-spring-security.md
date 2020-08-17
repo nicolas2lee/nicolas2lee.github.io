@@ -17,6 +17,7 @@ So in all examples, csrf is disabled.
 #### Workflow
 Basic authentication is the simplest way and most stateless way to do authentication.
 ![Basic auth](/images/2020-08-14-authentication-with-spring-security/basic_auth.png "Basic auth")
+
 For each resource request, client should send username/password in the http header: Authorization with format
     
     username:password base64 encode
@@ -37,6 +38,7 @@ So in fact, for each resource request, we should attach this http header, and th
 to handle authentication. And another way to do the basic auth, is to add the username and password in url:
 
     https://username:password@example.com/resource
+    
 Just for any special symbol in username or password should be put with url encoding
 #### Example configuration spring security
     @Configuration
@@ -62,13 +64,16 @@ Just for any special symbol in username or password should be put with url encod
             return MapReactiveUserDetailsService(user)
         }
     }
+    
 #### Security issue
 Through the username and password are sent with base64 encoded, which is easily reversible,
 https connection is required, otherwise, your username and password are visible.   
+
 ### Form login
 Form login is widely used in most application for authentication part.
 #### Workflow
 ![Form login](/images/2020-08-14-authentication-with-spring-security/form_login.png "Form login")
+
 1. Client request protected resource
 2. Server check if client is authenticated
 3. Client send username & password via POST /login
@@ -102,6 +107,7 @@ but we can choose to put into cookie or http header), and return to client
             return MapReactiveUserDetailsService(user)
         }
     }
+    
 ### Digest Authentication
 ~~The digest is based on basic auth and with hash MD5, and it return a hashed token instead of base64 encoded token, 
 and the token is generated with below way:~~
