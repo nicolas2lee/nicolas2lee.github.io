@@ -8,7 +8,7 @@ categories: Interview, Data structure
 [Leetcode 704. Binary Search](https://leetcode.com/problems/binary-search/)
 ## Without jdk native lib, just be careful of edge case of mid
 <details>
-  <summary>Binary search java code</summary>
+  <summary>java code</summary>
   
     public int search(int[] nums, int target) {
         int left =0, right = nums.length-1, mid = -1;
@@ -22,18 +22,22 @@ categories: Interview, Data structure
         }
         return -1;
     }
+    
 </details>
 
 
     
 ## With jdk native lib:
 * Array: 
-   
-   
+  <details>
+    <summary>java code</summary>
+  
     public int search(int[] nums, int target) {
         int index = Arrays.binarySearch(nums, target);
         return index <0 ? -1: index;
     }
+    
+  </details>
 * Collection:
 
 
@@ -44,7 +48,9 @@ when element not found, a negative will be returned, -index-1 is the position to
 ## Quick sort    
 [Leetcode 912. Sort an Array](https://leetcode.com/problems/sort-an-array/)
 ## Without jdk native lib:
-
+<details>
+  <summary>java code</summary>
+  
     class Solution {
         public int[] sortArray(int[] nums) {
            quickSort(0, nums.length-1, nums);
@@ -68,11 +74,15 @@ when element not found, a negative will be returned, -index-1 is the position to
             quickSort(i, end, nums);
         }
     }
+    
+</details>
 ## With jdk native lib:
     
     Arrays.sort(array)
 
 ## Merge sort
+<details>
+  <summary>java code</summary>
     
     void  mergeSort(int[] nums, int l, int r) {
         if (l >= r) return;
@@ -96,6 +106,7 @@ when element not found, a negative will be returned, -index-1 is the position to
         }
     }
 
+</details>
 # Graph
 ## BFS & DFS
 ### BFS        
