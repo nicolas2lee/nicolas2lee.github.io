@@ -27,6 +27,7 @@ categories: Interview, Data structure
 
 ## With jdk native lib:
 * Array: 
+
   <details>
     <summary>show java code</summary>
   
@@ -106,6 +107,7 @@ when element not found, a negative will be returned, -index-1 is the position to
     }
 
 </details>
+
 # Graph
 ## BFS & DFS
 ### BFS        
