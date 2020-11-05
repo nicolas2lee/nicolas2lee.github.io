@@ -92,6 +92,7 @@ Or you can call jdk api
 # Graph
 ## BFS & DFS
 ### BFS     
+## Union find set
 ## Minimum spanning tree
 [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
 
@@ -100,6 +101,7 @@ Or you can call jdk api
 2. Find the edge with min weight who is reachable based on all vertexes in mstSet, then add to mstSet
 3. Repeat 2 till mstSet contains n vertexes 
 
+Example of implementation:
 
     class Solution {
         public int minCostConnectPoints(int[][] points) {
@@ -129,8 +131,7 @@ Or you can call jdk api
                 sum+=minDis;
                 //System.out.printf("minIndex is %d, minDis is %d\n", minIndex, minDis);
             }
-            return sum;
-            
+            return sum;            
         }
         
         int[][] buildGraph(int[][] points){
@@ -155,6 +156,7 @@ Or you can call jdk api
 2. If 2 vertexes of the edge are not connected (here we use union find set to check if 2 vertexes are connected or not), then add the edge
 3. Repeat 2 till there are n-1 (here n is the number of vertex) edges are added
 
+Example of implementation:
 
     class Solution {
         static class Edge{
@@ -233,6 +235,9 @@ Or you can call jdk api
             return Math.abs(p1[0]-p2[0])+Math.abs(p1[1]-p2[1]);
         }
     }
+    
+## 
+
 # String
 ## Anagrams
 * [HackerRank Strings: Making Anagrams](https://www.hackerrank.com/challenges/ctci-making-anagrams/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings)
