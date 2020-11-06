@@ -92,7 +92,85 @@ Or you can call jdk api
 # Graph
 ## BFS & DFS
 ### BFS     
-## Union find set
+## Topological sort
+## How to check if a graph is DAG (directed acyclic graph)
+[Leetcode 207. Course Schedule](https://leetcode.com/problems/course-schedule/)
+### Topological sort
+1. Calculate indegree for each vertexes
+2. Take vertexes (whose indegree =0) off, and remove all connected edges & update indegree of all vertexes,
+here a simple way is to use queue, push all indegree=0 vertexes into the queue
+3. Repeat 2 till no vertex has indegree >0, if not there is a cycle
+
+    
+    class Solution {
+        public boolean canFinish(int numCourses, int[][] prerequisites) {
+            Map<Integer, List<Integer>> graph = new HashMap<>();
+            int[] indegree = new int[numCourses];
+            for(int[] e :  prerequisites){
+                List<Integer> list = graph.getOrDefault(e[1], new ArrayList<Integer>());
+                list.add(e[0]);
+                graph.put(e[1], list);
+                indegree[e[0]]++;
+            }
+            Queue<Integer> q = new LinkedList<>();
+            for(int i=0; i<numCourses; i++){
+                if (indegree[i]==0) q.add(i); 
+            }
+            boolean[] visited = new boolean[numCourses];
+            int count=0;
+            while(!q.isEmpty()){
+                int cur = q.poll();
+                visited[cur]=true;
+                count++;
+                List<Integer> edges = graph.getOrDefault(cur, new ArrayList<Integer>());
+                for(Integer x: edges){
+                    indegree[x]--;
+                    if (indegree[x]==0 && !visited[x]) q.add(x);
+                }
+            }
+            return count ==numCourses;
+        }
+    }
+    
+### Dfs
+A simple dfs solution, several points should be careful:
+1. Should dfs all points
+2. A visited array created:
+* 0 = not visited
+* 1 = visited
+* 2 = visiting (in current dfs path)
+So if the dfs vertex is in state visiting(visited[vertex]==2), it means a cycle
+
+
+    class Solution {
+        public boolean canFinish(int numCourses, int[][] prerequisites) {
+            Map<Integer, List<Integer>> graph = new HashMap<>();  
+            for(int[] e :  prerequisites){
+                List<Integer> list = graph.getOrDefault(e[1], new ArrayList<Integer>());
+                list.add(e[0]);
+                graph.put(e[1], list);
+            }
+            int[] visited = new int[numCourses];//0 not visited, 1 visited, 2 visiting (in current dfs)
+            for(int i=0; i<numCourses; i++){
+                if (hasCycle(i, graph, visited)) return false;
+            } 
+            return true;
+        }
+        
+        boolean hasCycle(int cur, Map<Integer, List<Integer>> graph, int[] visited){
+            if(visited[cur]==2) return true;
+            if(visited[cur]==1) return false;
+            visited[cur]=2;
+            List<Integer> edges = graph.getOrDefault(cur, new ArrayList<Integer>());
+            for (Integer e: edges){
+                if (hasCycle(e, graph, visited)) return true;    
+            }
+            visited[cur]=1;
+            return false;
+        }
+    }
+    
+## Union find 
 ## Minimum spanning tree
 [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
 
@@ -153,7 +231,7 @@ Example of implementation:
     
 ### Kruskal
 1. Sort all edges
-2. If 2 vertexes of the edge are not connected (here we use union find set to check if 2 vertexes are connected or not), then add the edge
+2. If 2 vertexes of the edge are not connected (here we use union find to check if 2 vertexes are connected or not), then add the edge
 3. Repeat 2 till there are n-1 (here n is the number of vertex) edges are added
 
 Example of implementation:
@@ -236,7 +314,7 @@ Example of implementation:
         }
     }
     
-## 
+
 
 # String
 ## Anagrams
