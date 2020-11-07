@@ -90,8 +90,23 @@ Or you can call jdk api
     }
 
 # Graph
+## How to represent a graph
+### Matrix
+The simplest representation of a graph, and efficient when lots of edges among any 2 vertexes.
+    
+    int[][] map= new int[n][n] where n is the number of vertex
+    
+### Adjoin list
+I found it is quite simple to use hashmap to represent adjoin list in java.
+    
+    Map<Integer, List<Integer>> map = new HashMap<>();
+
+## Union find 
 ## BFS & DFS
 ### BFS     
+### DFS
+#### Record the path
+#### Find all paths
 ## Topological sort
 ## How to check if a graph is DAG (directed acyclic graph)
 [Leetcode 207. Course Schedule](https://leetcode.com/problems/course-schedule/)
@@ -169,8 +184,9 @@ So if the dfs vertex is in state visiting(visited[vertex]==2), it means a cycle
             return false;
         }
     }
-    
-## Union find 
+### Union find
+It is easy to understand, check Union find section    
+
 ## Minimum spanning tree
 [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
 
