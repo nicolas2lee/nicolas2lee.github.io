@@ -103,10 +103,41 @@ I found it is quite simple to use hashmap to represent adjoin list in java.
 
 ## Union find 
 ## BFS & DFS
+[Leetcode 797. All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/)
 ### BFS     
+
+     1  procedure BFS(G, root) is
+     2      let Q be a queue
+     3      label root as discovered
+     4      Q.enqueue(root)
+     5      while Q is not empty do
+     6          v := Q.dequeue()
+     7          if v is the goal then
+     8              return v
+     9          for all edges from v to w in G.adjacentEdges(v) do
+    10              if w is not labeled as discovered then
+    11                  label w as discovered
+    12                  Q.enqueue(w)
+    
 ### DFS
-#### Record the path
-#### Find all paths
+#### A recursive implementation of DFS
+    
+    procedure DFS(G, v) is
+        label v as discovered
+        for all directed edges from v to w that are in G.adjacentEdges(v) do
+            if vertex w is not labeled as discovered then
+                recursively call DFS(G, w)
+#### A iterative implementation of DFS
+    
+    procedure DFS_iterative(G, v) is
+        let S be a stack
+        S.push(v)
+        while S is not empty do
+            v = S.pop()
+            if v is not labeled as discovered then
+                label v as discovered
+                for all edges from v to w in G.adjacentEdges(v) do 
+                    S.push(w)
 ## Topological sort
 ## How to check if a graph is DAG (directed acyclic graph)
 [Leetcode 207. Course Schedule](https://leetcode.com/problems/course-schedule/)
@@ -330,8 +361,93 @@ Example of implementation:
         }
     }
     
+## The shortest path
+### Dijkstra
+Dijkstra needs all weights of edges should be positive 
+[Leetcode 743. Network Delay Time](https://leetcode.com/problems/network-delay-time/)
+[Leetcode 787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
 
+     1  function Dijkstra(Graph, source):
+     2
+     3      create vertex set Q
+     4
+     5      for each vertex v in Graph:            
+     6          dist[v] ← INFINITY                 
+     7          prev[v] ← UNDEFINED                
+     8          add v to Q                     
+    10      dist[source] ← 0                       
+    11     
+    12      while Q is not empty:
+    13          u ← vertex in Q with min dist[u]   
+    14                                             
+    15          remove u from Q
+    16         
+    17          for each neighbor v of u:           // only v that are still in Q
+    18              alt ← dist[u] + length(u, v)
+    19              if alt < dist[v]:              
+    20                  dist[v] ← alt
+    21                  prev[v] ← u
+    22
+    23      return dist[], prev[]
+### Bellman-Ford
+Bellman-Ford, the weights of edges could be negative
+Do relax operation V-1 times (here V represents the number of vertexes)
 
+    if d[u] > weight[u][v]+d[v]    
+        d[u] = weight[u][v]+d[v]
+        
+    function BellmanFord(list vertices, list edges, vertex source) is
+        ::distance[], predecessor[]
+    
+        // This implementation takes in a graph, represented as
+        // lists of vertices and edges, and fills two arrays
+        // (distance and predecessor) about the shortest path
+        // from the source to each vertex
+    
+        // Step 1: initialize graph
+        for each vertex v in vertices do
+            distance[v] := inf             // Initialize the distance to all vertices to infinity
+            predecessor[v] := null         // And having a null predecessor
+        
+        distance[source] := 0              // The distance from the source to itself is, of course, zero
+    
+        // Step 2: relax edges repeatedly
+        for i from 1 to size(vertices)−1 do //just |V|−1 repetitions; i is never referenced
+            for each edge (u, v) with weight w in edges do
+                if distance[u] + w < distance[v] then
+                    distance[v] := distance[u] + w
+                    predecessor[v] := u
+    
+        // Step 3: check for negative-weight cycles
+        for each edge (u, v) with weight w in edges do
+            if distance[u] + w < distance[v] then
+                error "Graph contains a negative-weight cycle"
+                
+### Floyd
+
+    1 let dist be a |V| × |V| array of minimum distances initialized to ∞ (infinity)
+    2 for each vertex v
+    3    dist[v][v] ← 0
+    4 for each edge (u,v)
+    5    dist[u][v] ← w(u,v)  // the weight of the edge (u,v)
+    6 for k from 1 to |V|
+    7    for i from 1 to |V|
+    8       for j from 1 to |V|
+    9          if dist[i][j] > dist[i][k] + dist[k][j] 
+    10             dist[i][j] ← dist[i][k] + dist[k][j]
+    11         end if    
+    
+### The kth shortest path 
+#### A star search
+The simplest way is to find all possible paths, then find the kth shortest path, but it could be quite costly.
+The A start(A*) algo is quite similar as dijkstra, instead the weidht of each edge would be:
+
+    f(x) = h(x) + g(x)
+
+Here f(x) is the final cost function, g(x) is the weight of the edge, h(x) is a function which represents the distance
+from current vertex to the destination vertex, and the choice of h(x) could be different according to context.
+One of the most common way is to do a dijkstra and original destination becomes the source, find the shortest distance for each
+vertex to the original destination. 
 # String
 ## Anagrams
 * [HackerRank Strings: Making Anagrams](https://www.hackerrank.com/challenges/ctci-making-anagrams/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings)
