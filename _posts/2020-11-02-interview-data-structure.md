@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Interview preparation"
+title:  "Interview preparation data structure"
 date:   2020-11-02 14:00:00 +0100
 categories: Interview, Data structure
 ---
@@ -127,7 +127,8 @@ I found it is quite simple to use hashmap to represent adjoin list in java.
         for all directed edges from v to w that are in G.adjacentEdges(v) do
             if vertex w is not labeled as discovered then
                 recursively call DFS(G, w)
-#### A iterative implementation of DFS
+                
+#### An iterative implementation of DFS
     
     procedure DFS_iterative(G, v) is
         let S be a stack
@@ -138,6 +139,7 @@ I found it is quite simple to use hashmap to represent adjoin list in java.
                 label v as discovered
                 for all edges from v to w in G.adjacentEdges(v) do 
                     S.push(w)
+                    
 ## Topological sort
 ## How to check if a graph is DAG (directed acyclic graph)
 [Leetcode 207. Course Schedule](https://leetcode.com/problems/course-schedule/)
@@ -215,6 +217,7 @@ So if the dfs vertex is in state visiting(visited[vertex]==2), it means a cycle
             return false;
         }
     }
+    
 ### Union find
 It is easy to understand, check Union find section    
 
