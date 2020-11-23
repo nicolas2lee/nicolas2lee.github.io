@@ -456,6 +456,8 @@ vertex to the original destination.
 * [HackerRank Strings: Making Anagrams](https://www.hackerrank.com/challenges/ctci-making-anagrams/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings)
 * [Leetcode 1347. Minimum Number of Steps to Make Two Strings Anagram](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 * [Leetcode 438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
-   
+# Backtracking
+# DP
+[9 pack](https://github.com/tianyicui/pack/blob/master/V2.pdf)
 # Reference
 [Princeton lectures](https://algs4.cs.princeton.edu/lectures/)
