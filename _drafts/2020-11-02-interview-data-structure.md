@@ -4,7 +4,121 @@ title:  "Interview preparation data structure"
 date:   2020-11-02 14:00:00 +0100
 categories: Interview, Data structure
 ---
-# Binary search
+# Binary search tree
+## Introduction
+[BST stanford](http://cslibrary.stanford.edu/110/BinaryTrees.html)
+## Common operation
+* [BST insert node](https://www.hackerrank.com/challenges/binary-search-tree-insertion/problem)
+    
+    public Node insert(Node root,int data) {
+        if (root==null) return new Node(data);
+        if (data<=root.data) root.left=insert(root.left, data);
+        else root.right = insert(root.right, data);
+        return root;
+    } 
+    
+* [BST height](https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem)
+
+    public int getHeight(Node root){
+        if (root == null) return -1;
+        else return 1 + Math.max( getHeight(root.left), getHeight(root.right) );
+    }
+* [BST traversal](https://www.cnblogs.com/zhi-leaf/p/10813048.html)
+    * [PreOrder](https://www.hackerrank.com/challenges/tree-preorder-traversal/problem)
+    * [Leetcode preorder](https://leetcode.com/problems/binary-tree-preorder-traversal/)
+         
+            public static void preOrder(Node root) {
+                Stack<Node> stack = new Stack<>();
+                stack.push(root);
+                while(!stack.isEmpty()){
+                    Node cur = stack.pop();
+                    System.out.print(cur.data+" ");
+                    if (cur.right!=null) stack.push(cur.right);
+                    if (cur.left!=null) stack.push(cur.left);
+                }
+            }
+        
+    * [InOrder](https://www.hackerrank.com/challenges/tree-inorder-traversal/problem)
+    * [Leetcode inorder](https://leetcode.com/problems/binary-tree-inorder-traversal/) 
+     
+            public static void inOrder(Node root) {
+                Stack<Node> stack = new Stack<>();
+                Node cur = root;
+                while(cur!=null || !stack.isEmpty()){
+                    while(cur!=null) {
+                        stack.push(cur);
+                        cur = cur.left;
+                    }
+                    cur = stack.pop();
+                    System.out.print(cur.data+" ");
+                    cur = cur.right;
+                }
+            }
+              
+    * [PostOrder](https://www.hackerrank.com/challenges/tree-postorder-traversal/problem)
+    * [Leetcode postorder](https://leetcode.com/problems/binary-tree-postorder-traversal/)
+     
+        Using 2 stack, in fact, postOrder is quite similar to inverted preorder traversal, so 1 stack using for preorder like
+        traversal, another stack for output. Preorder is root, left, right, postorder is left, right , root, so not excatly inverted.
+        So when traversal should add left firstly, then the second one, where preorder add right first then left. 
+    
+            public void postOrder(Node root) {
+                Stack<Node> stack = new Stack<>();
+                Stack<Node> out = new Stack<>();
+                stack.push(root);
+                while(!stack.isEmpty()){
+                    Node cur = stack.pop();
+                    out.push(cur);
+                    if (cur.left!=null) stack.push(cur.left);
+                    if (cur.right!=null) stack.push(cur.right);
+                }
+                while(!out.isEmpty()){
+                    Node cur = out.pop();
+                    System.out.print(cur.data+" ");
+                }
+            }
+        
+        Using a single stack
+        
+                public void postOrder(Node root) {
+                    Stack<Node> stack = new Stack<>();
+                    stack.push(root);
+                    Node pre = null;
+                    while(!stack.isEmpty()){
+                        Node cur = stack.peek();
+                        /* if cur node is a leaf node(cur.right==null && cur.left==null), then visit it  
+                           if previous node is not null && pre node is one of cur node's children (pre!=null && (pre ==cur.left || pre == cur.right)), then visit it
+                           When pre node is right child node of cur node is easy to understand, since it arrives the 
+                           end of traversal (left->right->root). When pre node is left child of cur node, since the previous and
+                           cur node are 2 continous node in stack, which means cur node does not have right child node 
+                        */
+                        if ((cur.right==null && cur.left==null) || (pre!=null && (pre ==cur.left || pre == cur.right)) ){
+                            System.out.print(cur.data+" ");
+                            stack.pop();
+                            pre=cur;
+                        }else{
+                            if (cur.right!=null) stack.push(cur.right);
+                            if (cur.left!=null) stack.push(cur.left);
+                        }
+                    }
+                }
+                    
+    * [LevelOrder](https://www.hackerrank.com/challenges/tree-level-order-traversal/problem)
+        
+            public void levelOrder(Node root) {
+                if (root == null) return;
+                Queue<Node> q = new LinkedList<>();
+                q.offer(root);
+                List<Integer> ans = new ArrayList<>();
+                while (!q.isEmpty()){
+                    Node cur = q.poll();
+                    ans.add(cur.data);
+                    if (cur.left!=null) q.offer(cur.left);
+                    if (cur.right!=null) q.offer(cur.right);
+                }
+            }
+
+
 [Leetcode 704. Binary Search](https://leetcode.com/problems/binary-search/)
   
     public int search(int[] nums, int target) {
@@ -33,6 +147,7 @@ Or you can simple call api in jdk
     index = Collections.binarySearch(collection, target)
     
 when element not found, a negative will be returned, -index-1 is the position to insert
+
 # Sort
 ## Quick sort    
 [Leetcode 912. Sort an Array](https://leetcode.com/problems/sort-an-array/)
@@ -427,6 +542,7 @@ Do relax operation V-1 times (here V represents the number of vertexes)
                 error "Graph contains a negative-weight cycle"
                 
 ### Floyd
+For multi source, negative weight edge and cycle, but not for negatice cycle
 
     1 let dist be a |V| × |V| array of minimum distances initialized to ∞ (infinity)
     2 for each vertex v

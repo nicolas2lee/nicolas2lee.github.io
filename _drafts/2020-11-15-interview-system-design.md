@@ -64,29 +64,17 @@ Clients can do read/write operations in both master nodes, then all nodes are ei
 or have increased write latency due to synchronization
 #### Sharding
 #### Denormalization
+
+[What Happens When You Type A URL In Your Browser And Press Enter](https://medium.com/@salmenzouari/what-happens-when-you-type-a-url-in-your-browser-and-press-enter-fc56f387b5e7)
 # System design interview questions with solutions
 * [Designing a URL Shortening service like TinyURL](https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR)
 * [Design Pastebin.com (or Bit.ly)](https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/pastebin/README.md)
-* [Build a real-time gaming leaderboard](https://aws.amazon.com/blogs/database/building-a-real-time-gaming-leaderboard-with-amazon-elasticache-for-redis/)
 ## Design a chat system
-### Understand the problem and establish design scope (To complete)
-Some numbers:
-60 billion message a day in facebook messenger and whatsapp
-[Messenger and WhatsApp process 60 billion messages a day, three times more than SMS](https://www.theverge.com/2016/4/12/11415198/facebook-messenger-whatsapp-number-messages-vs-sms-f8-2016)
-Need to check with the interviewer to assume the needed use cases & scale
-1. 1 to 1 chat with low latency
-2. group chat
-3. show user presence & last connection time
-4. show messaging delivery status
-5. push notifications
-6. Should save messages
+[Chat system design](https://mp.weixin.qq.com/s?__biz=MzI1ODY0NjAwMA==&mid=2247483756&idx=1&sn=a8e3303bc573b1acaf9ef3862ef89bdd&chksm=ea044bf3dd73c2e5dcf2c10202c66d6143ec866205e9230f974fbc0b0be587926699230b6b18&scene=21#wechat_redirect)
+[Chat system design plus](https://cloud.tencent.com/developer/article/1525567)
 
-Group has the limit of 500
-50 million daily active users 
-Text message only at first, maybe including images & videos
-### Propose a high level design
-### Dive deep
-### Wrap up
+
+* [Build a real-time gaming leaderboard](https://aws.amazon.com/blogs/database/building-a-real-time-gaming-leaderboard-with-amazon-elasticache-for-redis/)
 
 ## Design a Video Streaming Service (To complete)
 [Design youtube](https://systeminterview.com/design-youtube.php)
@@ -129,7 +117,8 @@ Each of our IDs consists of:
 [Web crawler design](https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/web_crawler/README.md)
 
 ## Design typehead suggestion/auto complete system
-[Typehead suggestion design](https://www.youtube.com/watch?v=us0qySiUsGU&ab_channel=TusharRoy-CodingMadeSimple)
+* [Typehead suggestion design](https://www.youtube.com/watch?v=us0qySiUsGU&ab_channel=TusharRoy-CodingMadeSimple)
+
 
 ## Design yelp
 ## Design uber (an advanced version of design yelp)
