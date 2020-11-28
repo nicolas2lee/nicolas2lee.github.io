@@ -8,7 +8,7 @@ categories: Interview, Data structure
 ## Introduction
 [BST stanford](http://cslibrary.stanford.edu/110/BinaryTrees.html)
 ## Common operation
-* [BST insert node](https://www.hackerrank.com/challenges/binary-search-tree-insertion/problem)
+* [Hackerrank BST insert node](https://www.hackerrank.com/challenges/binary-search-tree-insertion/problem)
     
     public Node insert(Node root,int data) {
         if (root==null) return new Node(data);
@@ -17,14 +17,14 @@ categories: Interview, Data structure
         return root;
     } 
     
-* [BST height](https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem)
+* [Hackerrank BST height](https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem)
 
     public int getHeight(Node root){
         if (root == null) return -1;
         else return 1 + Math.max( getHeight(root.left), getHeight(root.right) );
     }
 * [BST traversal](https://www.cnblogs.com/zhi-leaf/p/10813048.html)
-    * [PreOrder](https://www.hackerrank.com/challenges/tree-preorder-traversal/problem)
+    * [Hackerrank PreOrder](https://www.hackerrank.com/challenges/tree-preorder-traversal/problem)
     * [Leetcode preorder](https://leetcode.com/problems/binary-tree-preorder-traversal/)
          
             public static void preOrder(Node root) {
@@ -38,7 +38,7 @@ categories: Interview, Data structure
                 }
             }
         
-    * [InOrder](https://www.hackerrank.com/challenges/tree-inorder-traversal/problem)
+    * [Hackerrank InOrder](https://www.hackerrank.com/challenges/tree-inorder-traversal/problem)
     * [Leetcode inorder](https://leetcode.com/problems/binary-tree-inorder-traversal/) 
      
             public static void inOrder(Node root) {
@@ -55,7 +55,7 @@ categories: Interview, Data structure
                 }
             }
               
-    * [PostOrder](https://www.hackerrank.com/challenges/tree-postorder-traversal/problem)
+    * [Hackerrank PostOrder](https://www.hackerrank.com/challenges/tree-postorder-traversal/problem)
     * [Leetcode postorder](https://leetcode.com/problems/binary-tree-postorder-traversal/)
      
         Using 2 stack, in fact, postOrder is quite similar to inverted preorder traversal, so 1 stack using for preorder like
@@ -103,7 +103,7 @@ categories: Interview, Data structure
                     }
                 }
                     
-    * [LevelOrder](https://www.hackerrank.com/challenges/tree-level-order-traversal/problem)
+    * [Hackerrank LevelOrder](https://www.hackerrank.com/challenges/tree-level-order-traversal/problem)
         
             public void levelOrder(Node root) {
                 if (root == null) return;
@@ -117,7 +117,45 @@ categories: Interview, Data structure
                     if (cur.right!=null) q.offer(cur.right);
                 }
             }
+            
+* [Leetcode remove node in bst](https://leetcode.com/problems/delete-node-in-a-bst/)
+To remove a node, should first find the position, then we should handle 4 cases:
+1. leaf node
+We can delete directly the leaf node
+2. node with left subtree 
+Remove the found node, and connect the left subtree to found node's parent directly
+3. Node with right subtree
+Same principle as 2
+4. Node has both left & right subtree
+    * find the min value node in right subtree
+    * remove min value node
+    * replace the to remove node val by min value found in previous step
+    
 
+    class Solution {
+        public TreeNode deleteNode(TreeNode root, int key) {
+            if (root==null) return null;
+            if (root.val==key){
+                if (root.left==null && root.right==null) root=null;
+                else if (root.right !=null && root.left == null ) {
+                    root = root.right;
+                }else if (root.right==null && root.left!=null){
+                    root = root.left;
+                }else{
+                    TreeNode minNode = findMin(root.right);
+                    deleteNode(root, minNode.val);
+                    root.val = minNode.val;
+                }
+            }else if (key<root.val) root.left = deleteNode(root.left, key);
+            else root.right = deleteNode(root.right, key);
+            return root;
+        }
+        
+        TreeNode findMin(TreeNode node){
+            if (node.left !=null) return findMin(node.left);
+            return node;
+        }
+    }
 
 [Leetcode 704. Binary Search](https://leetcode.com/problems/binary-search/)
   
