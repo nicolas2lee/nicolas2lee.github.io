@@ -156,8 +156,29 @@ Same principle as 2
             return node;
         }
     }
+* LCA(Lowest Common Ancestor)
+[Hackerrank lca](https://www.hackerrank.com/challenges/binary-search-tree-lowest-common-ancestor/problem)
+[Leetcode lca](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+[Leetcode iven-a-binary-search-tree-find-the-distance-between-2-nodes](https://leetcode.com/discuss/interview-question/algorithms/125084/given-a-binary-search-tree-find-the-distance-between-2-nodes)
+As a BST, we can easiliy conclude lca>=min && lca<=max
 
-[Leetcode 704. Binary Search](https://leetcode.com/problems/binary-search/)
+    	public Node lca(Node root, int v1, int v2) {
+            int min = v1 > v2 ? v2: v1;
+            int max = v1 <= v2 ? v2: v1;
+            if (root.data > max) return lca(root.left, v1, v2);
+            else if (root.data< min) return lca(root.right, v1, v2);
+            return root;
+        }
+        
+* kth smallest node in bst
+Inorder traversal will given a sorted list of bst.
+[Leetcode kth smallest element in a bst](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)        
+
+* valid a bst
+[Leetcode validate binary search tree](https://leetcode.com/problems/validate-binary-search-tree/)
+Using inorder traversal, then check cur node is greater than previous node
+
+* [Leetcode 704. Binary Search](https://leetcode.com/problems/binary-search/)
   
     public int search(int[] nums, int target) {
         int left =0, right = nums.length-1, mid = -1;
@@ -185,6 +206,9 @@ Or you can simple call api in jdk
     index = Collections.binarySearch(collection, target)
     
 when element not found, a negative will be returned, -index-1 is the position to insert
+
+# Trie
+[Leetcode word search ii dfs + trie](https://leetcode.com/problems/word-search-ii/)
 
 # Sort
 ## Quick sort    

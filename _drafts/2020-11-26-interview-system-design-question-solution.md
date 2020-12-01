@@ -20,6 +20,8 @@ categories: Interview, system design
 4. Design a google like search engine
     * [Google architecture](http://infolab.stanford.edu/~backrub/google.html)
     * [Implement google search engine](https://softwareengineering.stackexchange.com/questions/38324/how-would-you-implement-google-search)
+5. Design a yelp like nearby system
+    * [Design yelp or nearby friends](https://learnsystemdesign.blogspot.com/p/design-yelp-or-nearby-friends.html)
 ## Design a Video Streaming Service (To complete)
 [Design youtube](https://systeminterview.com/design-youtube.php)
 Fun facts of YouTube in 2020 
