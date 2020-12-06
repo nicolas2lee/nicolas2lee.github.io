@@ -23,28 +23,44 @@ Disadvantage: data loss, inconsistency
 LRU (Least recently used)
 
 
-    private Map<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
-    private int capacity;
+    class LRUCache {
+        Map<Integer, Integer> map;
+        Deque<Integer> deque;
+        int capacity;
     
-    public LRUCache(int capacity) {
-        this.capacity = capacity;
+        public LRUCache(int capacity) {
+            this.capacity = capacity;
+            this.map = new HashMap<>();
+            this.deque = new LinkedList<>();
+        }
+    
+        public int get(int key) {
+            if (!map.containsKey(key)) return -1;
+            final Integer val = map.get(key);
+            deque.remove(key);
+            deque.offer(key);
+            //System.out.println(deque);
+            return val;
+        }
+    
+        public void put(int key, int value) {
+            if (!map.containsKey(key)){
+                if (deque.size()==capacity){
+                    int toRemoveKey = deque.poll();
+                    map.remove(toRemoveKey);
+                    deque.offer(key);
+                    map.put(key, value);
+                }else {
+                    map.put(key, value);
+                    deque.offer(key);
+                }
+            }else{
+                deque.remove(key);
+                deque.offer(key);
+                map.put(key, value);
+            }
+        }
     }
-    
-    public int get(int key) {
-        if (!map.containsKey(key)) return -1;
-        int val = map.get(key);
-        set(key, val);
-        return val;
-    }
-    
-    public void set(int key, int value) {
-        //if not contains and reach the capacity, then remove the 1st inserted element
-        if (!map.containsKey(key) && (map.size() == capacity)) 
-            map.remove(map.keySet().iterator().next());
-        // if contains key, remove element
-        else map.remove(key);
-        map.put(key, value);
-    }}
 
 ## Cache high availability  
 [Design the caching system](https://medium.com/@narengowda/designing-the-caching-system-e42c6938df6a)

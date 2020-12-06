@@ -22,6 +22,8 @@ categories: Interview, system design
     * [Implement google search engine](https://softwareengineering.stackexchange.com/questions/38324/how-would-you-implement-google-search)
 5. Design a yelp like nearby system
     * [Design yelp or nearby friends](https://learnsystemdesign.blogspot.com/p/design-yelp-or-nearby-friends.html)
+6. Design a uber like system
+    * [Design uber system](https://learnsystemdesign.blogspot.com/p/design-uber-backend.html)
 ## Design a Video Streaming Service (To complete)
 [Design youtube](https://systeminterview.com/design-youtube.php)
 Fun facts of YouTube in 2020 
