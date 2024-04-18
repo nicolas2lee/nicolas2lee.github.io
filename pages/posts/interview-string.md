@@ -7,8 +7,8 @@ author: nicolas2lee
 ---
 
 # Interview string
-## String wildcard match
-### Problem
+## String match
+### Problem - String wildcard match
 [Leetcode 44. Wildcard Matching](https://leetcode.com/problems/wildcard-matching/description/)
 
 Given string s and pattern p, return true if pattern p matches s, otherwise false. The rules are:
@@ -53,6 +53,55 @@ class Solution {
         }
         while (pi<pLen && p.charAt(pi)=='*') pi++;
         return pi==p.length();
+    }
+}
+```
+### Problem - Regular Expression Matching
+[Leetcode 10. Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/description/)
+
+Given string s and pattern p, return true if pattern p matches s, otherwise false. The rules are:
+1. '?' matches any single character
+2. '*' matches 0 or more of the preceding element.
+
+For example:
+```
+s = "aa", p = "a*" -> true
+s = "ab", p = ".*" -> true
+```
+
+### Solution
+The diffcult part of the problem is how to handle the case ```.*``` correctly.
+In the case ```.*```, we need to check the first char is match. If so then we check recursively:
+
+1. ```.*``` matches 0 in string s, then move the pattern 2 chars
+
+```isMatch(s, p.substring(2))```
+
+2. ```.*``` matches 1 to n chars in string s, then move the string s 1 char step by step
+
+```firstMatch && isMatch(s.substring(1), p)```
+
+3. Other case, not ```*```
+
+So move string s 1 char and pattern 1 char
+```firstMatch && isMatch(s.substring(1), p.substring(1))```
+
+
+```java
+class Solution {
+    public boolean isMatch(String s, String p) {
+        if (p.length()==0) return s.length()==0;
+        boolean firstMatch = s.length()>0 && (s.charAt(0) == p.charAt(0) || p.charAt(0)=='.');
+        if (p.length()>=2 && p.charAt(1)=='*'){
+            return isMatch(s, p.substring(2)) // match 0 pre*
+            || (
+                firstMatch && isMatch(s.substring(1), p) //match 1..n pre*
+            );
+        } else {
+            // * syntax should be valid, check s[i] matches p[j]
+            return  firstMatch && isMatch(s.substring(1), p.substring(1));
+        }
+        
     }
 }
 ```
