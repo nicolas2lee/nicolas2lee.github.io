@@ -71,8 +71,8 @@ class Solution {
     TreeNode delete(TreeNode cur, Set<Integer> toDeleteSet){
         if (cur==null) return null;
         var deleted = toDeleteSet.contains(cur.val);
-        cur.left = dfs(cur.left, toDeleteSet);
-        cur.right = dfs(cur.right, toDeleteSet);
+        cur.left = delete(cur.left, toDeleteSet);
+        cur.right = delete(cur.right, toDeleteSet);
         if (deleted){
             if (cur.left!=null) roots.add(cur.left);
             if (cur.right!=null) roots.add(cur.right);
