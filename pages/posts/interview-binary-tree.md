@@ -46,4 +46,40 @@ class Solution {
 }
 ```
 
+## Lowest Common Ancestor of a Binary Tree (LCA)
+### Delete Nodes And Return Forest
+#### Problem
+[1110. Delete Nodes And Return Forest](https://leetcode.com/problems/delete-nodes-and-return-forest/description/)
+#### Solution
+Let's define a helper function ```delete(node)```, and use post order to visit the tree.
+If cur node to delete, then add left & right child into roots, return null to the parent node, so the parent node will point to null (it means no subtree)
+If cur node should be deleted, then no change.
 
+```java
+class Solution {
+    List<TreeNode> roots;
+
+    public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
+        roots = new ArrayList<>();
+        var set = new HashSet<Integer>();
+        for(var x: to_delete) set.add(x);
+        var node = delete(root, set);
+        if (node!=null) roots.add(node);
+        return roots;
+    }
+
+    TreeNode delete(TreeNode cur, Set<Integer> toDeleteSet){
+        if (cur==null) return null;
+        var deleted = toDeleteSet.contains(cur.val);
+        cur.left = dfs(cur.left, toDeleteSet);
+        cur.right = dfs(cur.right, toDeleteSet);
+        if (deleted){
+            if (cur.left!=null) roots.add(cur.left);
+            if (cur.right!=null) roots.add(cur.right);
+            return null;
+        }else{
+            return cur;
+        }
+    }
+}
+```
