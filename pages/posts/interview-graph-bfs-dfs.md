@@ -17,7 +17,9 @@ author: nicolas2lee
 The board is very small, so we can use BFS to search all states. The goal is to find the state with "123450". We can convert the board to a string to represent. The step transition 
 is that swapping 0 with it's adjecent. And also we can convert the board to string as state, and add it to a set ```seen```, if the string is already in ```seem```, then we do not 
 need to search again.
-
+<details>
+  <summary>Show code</summary>
+    
 ```java
 class Solution {
     static class Node{
@@ -104,4 +106,5 @@ class Solution {
     }
 }
 ```
+</details>
 
