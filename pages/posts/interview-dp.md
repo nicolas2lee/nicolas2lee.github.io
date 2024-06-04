@@ -8,7 +8,7 @@ author: nicolas2lee
 
 # Interview dp
 ## Paint house
-### Paint hourse problem
+### [256 Paint hourse](https://leetcode.com/problems/paint-house/description/)
 There is a row of n houses, where each house can be painted one of three colors: red, blue, or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.
 
 The cost of painting each house with a certain color is represented by an n x 3 cost matrix costs.
@@ -84,3 +84,6 @@ class Solution {
 }
 ```
 </details>
+
+### [265. Paint House II](https://leetcode.com/problems/paint-house-ii/description/)
+Same as previous problme, instead of having 3 colors, this problem has k colors
