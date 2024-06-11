@@ -20,6 +20,7 @@ If a node is LCA of p and q, then the left subtree should contain p,
 and right subtree should contain q
 <details>
   <summary>Show code</summary>
+  
 ```java
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root==null || root.val==p.val || root.val == q.val) return root;
@@ -29,6 +30,7 @@ and right subtree should contain q
         return left!=null ? left : right;
     }
 ```
+
 </details>
 
 ### LCA for binary search tree
@@ -41,6 +43,7 @@ If value of current node is between p, q, then current node is the lca
 
 <details>
   <summary>Show code</summary>
+  
 ```java
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -51,6 +54,7 @@ class Solution {
     }
 }
 ```
+
 </details>
 
 ## Lowest Common Ancestor of a Binary Tree (LCA)
