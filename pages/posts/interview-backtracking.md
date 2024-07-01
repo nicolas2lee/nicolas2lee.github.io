@@ -9,14 +9,49 @@ author: nicolas2lee
 # Interview permutations
 ## permutations
 ### Permutations I (without duplicates)
-https://leetcode.com/problems/permutations/description/
 
+#### Problem
+[46. Permutations](https://leetcode.com/problems/permutations/description/)
+
+#### Solution - Backtracking
+
+<details>
+  <summary>Show code</summary>
+
+```java
+class Solution {
+    int[] nums;
+    List<List<Integer>> ans;
+    public List<List<Integer>> permute(int[] nums) {
+        this.nums = nums;
+        ans = new ArrayList<>();
+        backtracking(new ArrayList<>());
+        return ans;
+    }
+
+    void backtracking(List<Integer> curList){
+        if (curList.size()==nums.length){
+            ans.add(new ArrayList<>(curList));
+            return;
+        }
+        for(int i=0; i<nums.length; i++){
+            if (!curList.contains(nums[i])){
+                curList.add(nums[i]);
+                backtracking(new ArrayList<>(curList));
+                curList.remove(curList.size()-1);
+            }
+        }
+    }
+}
+```
+
+</details>
 
 
 
 
 ### Permutations II (with duplicates)
-Problem: [Leetcode 47. Permutations II](https://leetcode.com/problems/permutations-ii/description/)
+#### Problem: [Leetcode 47. Permutations II](https://leetcode.com/problems/permutations-ii/description/)
 
 Solution:
 The same base as the Permutations I problem, use backtracking, for each position, you can only pick the unique number, let's take an example of [1, 1, 2]:
