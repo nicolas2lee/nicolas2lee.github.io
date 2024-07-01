@@ -47,9 +47,6 @@ class Solution {
 
 </details>
 
-
-
-
 ### Permutations II (with duplicates)
 #### Problem: [Leetcode 47. Permutations II](https://leetcode.com/problems/permutations-ii/description/)
 
@@ -63,13 +60,16 @@ So we need a hashmap to store the unique number with it's count, when the count 
 
 ### Next Permutations 
 
-## Subsets (without duplicates)
-Problem: [Leetcode 78. Subsets](https://leetcode.com/problems/subsets/description/)
+## Subset
+### Subsets (without duplicates)
+#### Problem: [Leetcode 78. Subsets](https://leetcode.com/problems/subsets/description/)
 
 Solution:
 Iterate from index 0 to n of nums, for each number, we can either pick it, or not pick it, then backtrack on it
 
-## Subsets II (with duplicates)
+### Subsets II (with duplicates)
+#### Problem: [90. Subsets II](https://leetcode.com/problems/subsets-ii/description/)
+
 1. We need to sort all numbers
 2. The same as previous problem subsets, backtrakcing for every number, either pick it or not pick it. The difference is when the current number is the same as previous number, after the 1st time it was added, then we just skip it
 
