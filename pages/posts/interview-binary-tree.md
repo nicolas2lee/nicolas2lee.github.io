@@ -57,8 +57,7 @@ class Solution {
 
 </details>
 
-## Lowest Common Ancestor of a Binary Tree (LCA)
-### Delete Nodes And Return Forest
+## Delete Nodes And Return Forest
 #### Problem
 [1110. Delete Nodes And Return Forest](https://leetcode.com/problems/delete-nodes-and-return-forest/description/)
 #### Solution
@@ -100,7 +99,7 @@ class Solution {
 </details>
 
 ## Find leaves of binary tree
-### Delete Nodes And Return Forest
+
 #### Problem
 [366. Find Leaves of Binary Tree](https://leetcode.com/problems/find-leaves-of-binary-tree/description/)
 
